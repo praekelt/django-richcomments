@@ -1,0 +1,27 @@
+<span id="{{ selector_id }}">
+    {{ form_html }}
+</span>
+
+<script type="text/javascript">
+var options = { 
+    success: function(response_text, status_text, xhr, form_elem) {
+        // reload comments
+        $('#commentlist_{{ selector_id }}').load("{% url render_comment_list content_type object_pk %}" , function(responseText, textStatus, XMLHttpRequest) {
+            // fill span with response
+            $('#{{ selector_id }}').html(response_text);
+            // rebind form
+            $('#{{ selector_id }} form').ajaxForm(options);
+        });
+    }, 
+    beforeSubmit: function() {
+        // hide comment_thanks class
+        $('#{{ selector_id }} .comment_thanks').hide();
+        // show comment_busy class
+        $('#{{ selector_id }} .comment_busy').show();
+    }
+};
+
+$(function() {
+    $('#{{ selector_id }} form').ajaxForm(options);
+});
+</script>
