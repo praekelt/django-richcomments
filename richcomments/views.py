@@ -1,7 +1,7 @@
-from django import template
 from django.contrib.contenttypes.models import ContentType
 from django.http import HttpResponse
 from django.template import Template, RequestContext
+
 
 def list(request, content_type, id):
     """

@@ -1,5 +1,7 @@
-from django.contrib.comments.templatetags.comments import RenderCommentFormNode, RenderCommentListNode
+from django.contrib.comments.templatetags.comments import \
+        RenderCommentFormNode, RenderCommentListNode
 from django.template.loader import render_to_string
+
 
 def rendercommentform_render_wrapper(func):
     def wrapped(self, context, *args, **kwargs):
@@ -13,7 +15,9 @@ def rendercommentform_render_wrapper(func):
         })
     return wrapped
 
-RenderCommentFormNode.render = rendercommentform_render_wrapper(RenderCommentFormNode.render)
+RenderCommentFormNode.render = rendercommentform_render_wrapper(\
+        RenderCommentFormNode.render)
+
 
 def rendercommentlist_render_wrapper(func):
     def wrapped(self, context, *args, **kwargs):
@@ -25,4 +29,5 @@ def rendercommentlist_render_wrapper(func):
         })
     return wrapped
 
-RenderCommentListNode.render = rendercommentlist_render_wrapper(RenderCommentListNode.render)
+RenderCommentListNode.render = rendercommentlist_render_wrapper(\
+        RenderCommentListNode.render)
